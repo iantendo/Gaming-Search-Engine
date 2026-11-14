@@ -3,7 +3,6 @@ import json
 import re   #allowed us to clean up some clutter
 import pandas as pd
 import time
-
 from bs4 import BeautifulSoup
 from urllib.robotparser import RobotFileParser 
 from urllib.parse import urljoin, urlparse  #parses URL and joins them
@@ -14,7 +13,7 @@ from collections import defaultdict #dict subclass that calls a factory function
 Debug = 0
 
 #change amount to crawl here
-pagesToCrawl = 1000
+pagesToCrawl = 100000
     
 def crawl(begin_URL, crawlMax):
 
@@ -126,7 +125,7 @@ def crawl(begin_URL, crawlMax):
                 edges.append((currURL, moreCurrURL))
 
         time.sleep(.75) #hopefully makes the program wait a second before jumping to next url
-        #Need to makke sure does not reach 200 requests per second
+        #Need to make sure does not reach 200 requests per second
 
     if Debug == 1: print(f"\n")
     if Debug == 1: print(f"{edges}\n\n")
@@ -160,6 +159,7 @@ def crawl(begin_URL, crawlMax):
  
     json_str = json.dumps(dataToJson, indent=4, ensure_ascii=False)
 
+    #rewrite of the matrix so it does not input every new line.
     def compact_matrix(match):
         block = match.group(0)
         return re.sub(r'\[\s*([0-9,\s]+)\s*\]', lambda m: '[' + ", ".join(re.findall(r'\d+', m.group(1))) + ']', block)
@@ -171,7 +171,6 @@ def crawl(begin_URL, crawlMax):
 
     print(f"Dumped into Json\n")
     return
-
 
 if __name__ == "__main__":
     #Test sites
