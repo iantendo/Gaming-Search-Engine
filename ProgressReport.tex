@@ -1,0 +1,45 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Progress Report}
+\author{Lyndsey Simon and Ian Levitre}
+
+\begin{document}
+\maketitle
+
+\section{Current progress}
+
+\quad No features have been worked on at this time. Outside the basic study of whoosh and on trying to figure out which User interface we would like to use in tandem with python since whoosh! is used with python. Currently crawling for data that we need. Most of the coding and work will be worked on after this coming Friday.
+
+\section{Challenges encountered}
+
+\quad Biggest challenge by far has been finding the appropriate place to do the initial 'crawl' on. At the beginning, the assumptions and pre-investigation had led to the possibility that steam API or Moby Games would allow for easy crawls. However, further investigation showed that neither were doable. Steam API required an API key that someone could sign up for; however, they would mostly only give them to developers, and this case did not fit for an API key. 
+
+Moby Games initially showed possibility because there robots.txt permits allowed for it, however they have a wall that forces all crawlers to pause because they force robots to allow for cookies and promos which is something you either have to figure out by using tools not necessarily good or an individual can pay a hefty sum to allow for crawling. The cost for crawling 1 requests/sec is 100 dollars and the project is supposed to cost 0 dollars. After further investigation it was discovered that wiki has an official list of video games available to crawl through. So instead it was decided to crawl through wiki, after getting correct permits and setting an appropriate time pause for polite crawling. The pause does mean that crawling is taking much longer to obtain the 100,000 pages needed for our data collection.
+
+An interesting rock that was stumbled on was the amount of data that needed to be preserved. It was learned that an .xlsx document could not hold the allotted 300,000+ pieces that would be needed (urls, matrix, data), so instead we are storing everything in Json. 
+    
+\section{TO DO}
+
+\begin{itemize}
+\item Figure out User Interface (leaning towards Html)
+\item figure out simple algorithm
+\item proper code interaction between python and html
+\item finish up crawl
+\end{itemize}
+
+
+
+\end{document}
